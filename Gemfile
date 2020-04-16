@@ -40,6 +40,8 @@ gem 'simple_form'
 # markdown
 gem 'redcarpet'
 
+
+
 #devise
 gem 'devise'
 # Reduces boot times through caching; required in config/boot.rb
@@ -63,6 +65,8 @@ end
 
 group :test do 
  gem 'capybara'
+ gem 'shoulda-matchers', require: false
+ gem 'database_cleaner'
 end
 
 
