@@ -10,10 +10,13 @@ feature 'create new achievement' do
         select('Public', from: 'Privacy')
         check('Featured achievement')
         attach_file('Cover image', "#{Rails.root}/spec/fixtures/cover_image.jpg")
-        click_on('Create Achievement')
+        expect {
+            click_on('Create Achievement')
+        }.to change(Achievement, :count).by(1)
 
         expect(page).to have_content('Achievement has been created')
         expect(Achievement.last.title).to eq('Read a book')
+    
     end
 
     scenario 'cannot create achievement with invalid data' do

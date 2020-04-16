@@ -6,7 +6,7 @@ class AchievementsController < ApplicationController
     def create
         new_achievement = Achievement.new(data_params)
         if new_achievement.save
-            redirect_to root_path, notice: 'Achievement has been created'
+            redirect_to achievement_path(new_achievement), notice: 'Achievement has been created'
         else
             flash.now[:danger] = "Fields can't be blank"
             render :new
@@ -15,7 +15,6 @@ class AchievementsController < ApplicationController
 
     def show
         @achievement = Achievement.find(params[:id])
-        @description = Redcarpet::Markdown.new(Redcarpet::Render::HTML).render(@achievement.description)
     end
 
     private
